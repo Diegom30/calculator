@@ -6,6 +6,8 @@ body {
 .container {
   width: 19rem;
   height: 39rem;
+  max-width: 19em;
+  overflow: hidden;
   border-radius: 39px;
   display: flex;
   flex-direction: column;
@@ -71,15 +73,31 @@ button:nth-child(17) {
   font-weight: 500;
 }
 .circle {
-  margin: auto;
-  margin-left: 37.5rem;
-  width: 600px;
-  height: auto;
+    margin: auto;
+    top: 11%;
+    left: 50%;
+    transform: translateX(-25%);
+    width: 600px;
+    height: auto;
+    position: fixed;
+    z-index: -1;
+ 
 }
 .circles {
   width: 100%;
   
 }
+
+button:focus {
+    border: 2px solid #ccc;
+    box-shadow: 0 0 5px #ccc;
+  }
+  
+  button:active {
+    transform: translateY(1px);
+    box-shadow: none;
+  }
+ 
 
 /* Modo oscuro */
 /* Boton de modo oscuro*/
@@ -179,4 +197,19 @@ input:checked + label svg.moon {
 
 .darkmode .calculator-display {
   color: #fff;
+}
+
+
+
+@media (max-width: 911px) {
+    .circle{
+        display: none;
+    }
+    
+}
+
+@media (max-width: 450px) {
+    .container{
+        height: 33rem;
+    }
 }
