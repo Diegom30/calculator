@@ -2,6 +2,8 @@ const calculator = document.querySelector(".calculator");
 const keys = document.querySelector(".calculator-keys");
 const display = document.querySelector(".calculator-display");
 
+
+
 const calculate = (n1, operator, n2) => {
   const firstNum = parseFloat(n1);
   const secondNum = parseFloat(n2);
@@ -32,6 +34,8 @@ const createResultString = (key, displayedNum, state) => {
   const keyType = getKeyType(key);
   const { firstValue, operator, modValue, prevousKeyType } = state;
 
+
+
   if (keyType == "number") {
     return displayedNum === "0" ||
       prevousKeyType === "operator" ||
@@ -40,7 +44,7 @@ const createResultString = (key, displayedNum, state) => {
       : displayedNum + keyContent;
   }
 
-  if (keyType === "dcecimal") {
+  if (keyType === "decimal") {
     if (!displayedNum.includes(".")) return displayedNum + ".";
     if (prevousKeyType === "operator" || prevousKeyType === "calculate")
       return "0.";
@@ -104,7 +108,7 @@ const updateCalculatorState = (
 
 const updateVisualState = (key, calculator) => {
   const keyType = getKeyType(key);
-  Array.from(key.parentNode.children).forEach(k =>
+  Array.from(key.parentNode.children).forEach((k) =>
     k.classList.remove("is-depressed")
   );
   if (keyType === "operator") key.classList.add("is-depressed");
@@ -115,10 +119,19 @@ const updateVisualState = (key, calculator) => {
   }
 };
 
+function deleteNum() {
+    const result = display.textContent;
+    display.textContent = result.slice(0 ,-1);
+  }
+
 keys.addEventListener("click", (e) => {
   if (!e.target.matches("button")) return;
   const key = e.target;
   const displayedNum = display.textContent;
+  if (getKeyType(key) === "delete") {
+    deleteNum();
+    return;
+  }
   const resultString = createResultString(
     key,
     displayedNum,
