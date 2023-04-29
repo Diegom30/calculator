@@ -72,13 +72,13 @@ button:nth-child(17) {
 }
 .circle {
   margin: auto;
-  margin-left: 580px;
+  margin-left: 600px;
   width: 600px;
   height: auto;
 }
 .circles {
   width: 100%;
-  color: #000;
+  
 }
 
 /* Modo oscuro */
